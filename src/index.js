@@ -1,1 +1,2 @@
-import './threejstest';
+import './game';
+import './renderer';
