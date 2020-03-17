@@ -10,9 +10,10 @@ console.log(game.currentBoard);
 
 console.time('100 gameTicks');
 console.log(game.gameObjects);
-for (var i = 0; i < 100; i++) {
+for (var i = 0; i < 1; i++) {
   game.nextTick();
   game.defineBridgeGroups();
 }
-console.log(game.gameObjects);
 console.timeEnd('100 gameTicks');
+console.log(game.gameObjects);
+console.log(game.groups);
