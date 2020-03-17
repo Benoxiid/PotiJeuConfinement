@@ -18,14 +18,16 @@ sizes.ratio = sizes.width/sizes.height
  */
 const scene = new THREE.Scene()
 
+
 /**
  * Renderer
  */
-const renderer = new THREE.WebGLRenderer()
+const renderer = new THREE.WebGLRenderer({ alpha: true })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(window.devicePixelRatio)
 renderer.domElement
 document.body.appendChild(renderer.domElement)
+renderer.setClearColor( 0xffffff, 0 )
 
 
 /**
@@ -80,3 +82,7 @@ loop()
  */
 //-----------------------------------------------------------------------------------------------
 
+
+
+var gridHelper = new THREE.GridHelper( 10, 10 );
+scene.add( gridHelper );
