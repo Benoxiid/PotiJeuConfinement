@@ -1,7 +1,7 @@
 // Benox's stuff !
 
-import './classes/game';
-import './classes/level';
+import Game from './classes/game';
+import Level from './classes/level';
 
 var level = new Level();
 var game = new Game(level);

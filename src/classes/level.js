@@ -1,6 +1,6 @@
-import './gameObject';
+import GameObject from './gameObject';
 
-class Level {
+export default class Level {
   constructor() {
     this.xSize = 8;
     this.ySize = 8;

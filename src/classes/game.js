@@ -1,6 +1,4 @@
-import './level';
-
-class Game {
+export default class Game {
   constructor(level) {
     this.level = level;
     this.xSize = level.xSize;
