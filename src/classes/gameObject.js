@@ -6,4 +6,8 @@ export default class GameObject {
     this.type = 'object';
     this.symbol = 'O';
   }
+
+  nextTick() {
+    return null;
+  }
 }
