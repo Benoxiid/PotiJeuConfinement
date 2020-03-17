@@ -7,6 +7,7 @@ export default class Game {
     this.ySize = level.ySize;
 
     this.gameObjects = level.gameObjects;
+    this.groups = [];
   }
 
   get currentBoard() {
@@ -40,6 +41,7 @@ export default class Game {
     if (range == 1) {
       return [[x - 1, y], [x, y - 1], [x , y + 1], , [x + 1, y]];
     }
+    return null;
   }
 
   nextTickVirus(virus) {
@@ -62,6 +64,29 @@ export default class Game {
     }
   }
 
+  countViruses(group) {
+    var count = [0, 0];
+    var counted = [];
+
+    for (var i in group) {
+      var adjacentPos = this.getPosAtRange(group[i][0], group[i][1], 1);
+
+      for (var j in adjacentPos) {
+        if (this.getObjectAtPos(adjacentPos[j][0], adjacentPos[j][1]) != null) {
+          var targetObject = this.getObjectAtPos(adjacentPos[j][0], adjacentPos[j][1]);
+          if (targetObject.type == 'Virus' && targetObject.owner == 0 && counted.indexOf(adjacentPos[j]) == -1) {
+            count[0]++;
+            counted.push(adjacentPos[j]);
+          }
+          else if (targetObject.type == 'Virus' && targetObject.owner == 1 && counted.indexOf(adjacentPos[j]) == -1) {
+            count[1]++;
+            counted.push(adjacentPos[j]);
+          }
+        }
+      }
+    }
+  }
+
   defineBridgeGroups() {
     var bridges = [];
     var groups = [];
@@ -75,7 +100,22 @@ export default class Game {
     var matrix = new Matrix(this.xSize, this.ySize, bridges);
     groups.push(matrix.solve());
 
-    return groups;
+    for (var i in this.gameObjects) {
+      if (this.gameObjects[i].type == 'Bridge' && this.gameObjects[i].owner == 1) {
+        bridges.push(this.gameObjects[i]);
+      }
+    }
+
+    var matrix = new Matrix(this.xSize, this.ySize, bridges);
+    groups.push(matrix.solve());
+
+    for (var i in groups) {
+      for (var j in groups[i]) {
+        groups[i][j].unshift(this.countViruses([i][j]));
+      }
+    }
+
+    this.groups = groups;
   }
 
   nextTick() {
