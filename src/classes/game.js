@@ -73,18 +73,24 @@ export default class Game {
 
       for (var j in adjacentPos) {
         if (this.getObjectAtPos(adjacentPos[j][0], adjacentPos[j][1]) != null) {
+
           var targetObject = this.getObjectAtPos(adjacentPos[j][0], adjacentPos[j][1]);
+
           if (targetObject.type == 'Virus' && targetObject.owner == 0 && counted.indexOf(adjacentPos[j]) == -1) {
+
             count[0]++;
             counted.push(adjacentPos[j]);
           }
           else if (targetObject.type == 'Virus' && targetObject.owner == 1 && counted.indexOf(adjacentPos[j]) == -1) {
+
             count[1]++;
             counted.push(adjacentPos[j]);
           }
         }
       }
     }
+
+    return count;
   }
 
   defineBridgeGroups() {
@@ -100,6 +106,8 @@ export default class Game {
     var matrix = new Matrix(this.xSize, this.ySize, bridges);
     groups.push(matrix.solve());
 
+    bridges = [];
+
     for (var i in this.gameObjects) {
       if (this.gameObjects[i].type == 'Bridge' && this.gameObjects[i].owner == 1) {
         bridges.push(this.gameObjects[i]);
@@ -111,7 +119,7 @@ export default class Game {
 
     for (var i in groups) {
       for (var j in groups[i]) {
-        groups[i][j].unshift(this.countViruses([i][j]));
+        groups[i][j].unshift(this.countViruses(groups[i][j]));
       }
     }
 
