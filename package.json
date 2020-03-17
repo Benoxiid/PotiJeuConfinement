@@ -1,0 +1,25 @@
+{
+  "name": "potijeuconfinement",
+  "version": "0.1.0",
+  "description": "PotiJeuConfinement",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Benoxiid/PotiJeuConfinement.git"
+  },
+  "author": "Benoit Leroux",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Benoxiid/PotiJeuConfinement/issues"
+  },
+  "homepage": "https://github.com/Benoxiid/PotiJeuConfinement#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.42.0"
+  }
+}
