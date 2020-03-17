@@ -4,5 +4,6 @@ export default class GameObject {
     this.y = y;
 
     this.type = 'object';
+    this.symbol = 'O';
   }
 }

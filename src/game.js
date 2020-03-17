@@ -6,4 +6,4 @@ import Level from './classes/level';
 var level = new Level();
 var game = new Game(level);
 
-console.log(game);
+console.log(game.currentBoard);
