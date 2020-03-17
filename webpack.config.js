@@ -6,5 +6,26 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
-  mode: 'development'
+  mode: 'development',
+  plugins:
+  [
+    new MiniCssExtractPlugin()
+  ],
+  module:
+  {
+    rules:
+    [
+      {
+        test:/\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+      {
+        test:/\.styl$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'stylus-loader']
+      },
+    
+    ]
+
+  }
+
 };
