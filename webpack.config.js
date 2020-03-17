@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -23,9 +24,10 @@ module.exports = {
         test:/\.styl$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'stylus-loader']
       },
-    
+      {
+        test: /\.js$/,
+        use: ['babel-loader']
+      }
     ]
-
   }
-
 };
