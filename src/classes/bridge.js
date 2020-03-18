@@ -9,6 +9,6 @@ export default class Bridge extends Module {
     this.bridgeGroup = -1;
     this.type = 'Bridge';
     this.symbol = '+';
-    this.integrityPts = 20;
+    this.maxIntegrity = 20;
   }
 }

@@ -16,4 +16,3 @@ for (var i = 0; i < 100; i++) {
 console.timeEnd('100 gameTicks');
 console.log('max 10 000 ms');
 console.log(game.gameObjects);
-console.log(game.groups);

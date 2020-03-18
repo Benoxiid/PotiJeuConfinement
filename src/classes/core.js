@@ -9,5 +9,6 @@ export default class Core extends Module {
     this.symbol = 'C';
     this.integrityPts = integrityPts;
     this.dataPts = 1000;
+    this.builded = true;
   }
 }

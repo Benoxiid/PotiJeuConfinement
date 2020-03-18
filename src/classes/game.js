@@ -99,7 +99,7 @@ export default class Game {
     var groups = [];
 
     for (var i in this.gameObjects) {
-      if (this.gameObjects[i].type == 'Bridge' && this.gameObjects[i].owner == 0) {
+      if (this.gameObjects[i].type == 'Bridge' && this.gameObjects[i].owner == 0 && this.gameObjects[i].builded == true) {
         bridges.push(this.gameObjects[i]);
       }
     }
@@ -110,7 +110,7 @@ export default class Game {
     bridges = [];
 
     for (var i in this.gameObjects) {
-      if (this.gameObjects[i].type == 'Bridge' && this.gameObjects[i].owner == 1) {
+      if (this.gameObjects[i].type == 'Bridge' && this.gameObjects[i].owner == 1 && this.gameObjects[i].builded == true) {
         bridges.push(this.gameObjects[i]);
       }
     }
@@ -129,6 +129,7 @@ export default class Game {
 
   nextTick() {
     for (var i in this.gameObjects) {
+      this.gameObjects[i].nextTick();
 
       if (this.gameObjects[i].type == 'Core') {
 
