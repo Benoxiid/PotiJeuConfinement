@@ -8,6 +8,7 @@ export default class Game {
 
     this.gameObjects = level.gameObjects;
     this.groups = [];
+    this.tick = 0;
   }
 
   get currentBoard() {
@@ -33,13 +34,13 @@ export default class Game {
       if (this.gameObjects[i].x == x && this.gameObjects[i].y == y) {
         return this.gameObjects[i];
       }
-      return null;
     }
+    return null;
   }
 
   getPosAtRange(x, y, range) {
     if (range == 1) {
-      return [[x - 1, y], [x, y - 1], [x , y + 1], , [x + 1, y]];
+      return [[x - 1, y], [x + 1, y], [x, y - 1], [x, y + 1]];
     }
     return null;
   }
@@ -128,7 +129,6 @@ export default class Game {
 
   nextTick() {
     for (var i in this.gameObjects) {
-      this.gameObjects[i].nextTick();
 
       if (this.gameObjects[i].type == 'Core') {
 
@@ -137,5 +137,7 @@ export default class Game {
         this.nextTickVirus(this.gameObjects[i]);
       }
     }
+    this.defineBridgeGroups();
+    this.tick++;
   }
 }
