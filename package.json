@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"No test specified\"",
-    "serve": "webpack && node ./app.js"
+    "dev": "start node ./app.js && start webpack",
+    "serve": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,9 @@
     "@babel/runtime": "^7.8.7",
     "core-js": "^3.6.4",
     "express": "^4.17.1",
-    "three": "^0.114.0"
+    "pathfinding": "^0.4.18",
+    "three": "^0.114.0",
+    "three.meshline": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
@@ -29,12 +32,14 @@
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
+    "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
     "file-loader": "^6.0.0",
     "mini-css-extract-plugin": "^0.9.0",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
     "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   }
 }

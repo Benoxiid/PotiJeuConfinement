@@ -8,7 +8,21 @@ export default class Core extends Module {
     this.type = 'Core';
     this.symbol = 'C';
     this.integrityPts = integrityPts;
-    this.dataPts = 1000;
+    this.maxIntegrity = integrityPts;
+    this.dataPts = 25;
     this.builded = true;
+  }
+
+  addDataPts(amount) {
+    this.dataPts += amount;
+  }
+
+  removeDataPts(amount) {
+    this.dataPts -= amount;
+    if (this.dataPts < 0) {
+      this.dataPts += amount;
+      return false;
+    }
+    return true;
   }
 }
