@@ -298,7 +298,25 @@ export default class Game {
     return this.getCore(player).dataPts;
   }
 
+  checkVictory() {
+    if (this.getCore(0) == undefined) {
+      return 1;
+    }
+    else if (this.getCore(1) == undefined) {
+      return 0;
+    }
+    else {
+      return -1;
+    }
+  }
+
   nextTick() {
+    var victory = this.checkVictory();
+
+    if (victory != -1) {
+      return victory;
+    }
+
     this.defineBridgeGroups();
 
     this.getCore(0).addDataPts(1);
@@ -322,5 +340,7 @@ export default class Game {
     }
     this.cleanDeadObjects();
     this.tick++;
+
+    return victory;
   }
 }

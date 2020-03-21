@@ -11,6 +11,7 @@ var level = new Level();
 var game = new Game(level);
 var targetedCoords = [];
 var watched = [];
+var isRunning = true;
 
 /**
  * console.log(game.currentBoard);
@@ -68,13 +69,19 @@ setInterval(function(e) {
   targetedCoords = renderer.getIntersections();
 }, 20);
 
-setInterval(function(e) {
-  game.nextTick();
+var runningGame = setInterval(function(e) {
+  var status = game.nextTick();
+
+  if (status != -1) {
+    renderer.uiLog('Victory: ' + status);
+    isRunning = false;
+    clearInterval(runningGame);
+    return status;
+  }
   
   for (var i = 0; i < game.gameObjects.length; i++) {
     var object = game.gameObjects[i];
     if (object.type != 'Bridge') {
-      // renderer.drawValue(object.x, object.y, 'Intergrity: ' + object.integrityPts.toString(), object.type + object.owner);
       watched.push([object.type + object.owner, object.integrityPts.toString()]);
     }
   }
@@ -84,6 +91,10 @@ setInterval(function(e) {
   renderer.uiWatch(...watched);
   watched = [];
 }, 100)
+
+/**
+ * Registering control events
+ */
 
 window.addEventListener('click', function(e) {
   game.buildModule(...targetedCoords, 'Virus', 0);
@@ -98,5 +109,3 @@ window.addEventListener('contextmenu', function(e) {
 window.addEventListener('rendering', function (e) {
   renderer.updateUI();
 });
-
-renderer.uiLog('Test !');
