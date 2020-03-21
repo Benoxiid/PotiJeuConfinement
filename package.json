@@ -23,6 +23,7 @@
     "core-js": "^3.6.4",
     "express": "^4.17.1",
     "pathfinding": "^0.4.18",
+    "socket.io": "^2.3.0",
     "three": "^0.114.0",
     "three.meshline": "^1.2.0"
   },
